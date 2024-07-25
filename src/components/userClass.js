@@ -35,6 +35,7 @@ class UserClass extends React.Component{
                 <h2>Name:{this.state.userinfo.name}</h2>
                 <h2>Profession: {this.state.userinfo.bio}</h2>
                 <h2>Gmail: gdakriti.yadav2gmail.com</h2>  
+                <h2>Hello Akriti</h2>
                
             </div>
         )
