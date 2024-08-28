@@ -1,5 +1,5 @@
 import { useEffect,useState } from 'react';
-import {MENU_URL} from "../utils/constant.js";
+import {MENU_URL} from "./constant.js";
 
 const useRestroMenu = (resId) =>{
     console.log(resId);     

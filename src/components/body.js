@@ -1,10 +1,11 @@
 import React from 'react';
 import RestroCard, {withOpenLabel} from './restrocard.js';
 import "../index.css";
-import { useState,  useEffect } from 'react';
+import { useState,  useEffect, useContext } from 'react';
 import Shimmar from './shimmar';
 import {useParams,Link} from "react-router-dom";
 import useOnlineStatus from '../utils/useOnlineStatus.js';
+import UserContext from '../utils/usercontext.js';
 
 
 function Body()
@@ -13,13 +14,13 @@ function Body()
     const [searchRest, setSearchRest] = useState("");
     const [filteredRest, setFilteredRest] = useState([]);
 
-     const OpenRestro =  withOpenLabel(RestroCard); 
-     console.log(filterData);
+    const OpenRestro =  withOpenLabel(RestroCard); 
+    console.log(filterData);
 
     console.log(restList1);
-    useEffect(() =>{
+     useEffect(() =>{
         fetchData();
-    },[])
+    },[]) 
    /*  console.log("Body Rendered"); */
     // This is the function to filter the items according to their rating
     function filterData()
@@ -32,7 +33,7 @@ function Body()
 
     // This is the function in which we are going to fetch the swiggy api
     const fetchData = async () =>{
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.4914883&lng=73.82172899999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0748&lng=72.8856&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
         setRestList1(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRest(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -52,6 +53,8 @@ function Body()
             return <h1>You look offline </h1>
         }
     
+    // Setting userName
+    const {userName, setuserName} = useContext(UserContext);    
     console.log(restList1.length);
     return restList1.length === 0 ?  <Shimmar/> :(
         <div>
@@ -59,6 +62,7 @@ function Body()
                     <input type='text' className='border border-solid border-black mx-10 rounded-md' value={searchRest} onChange={(e) =>{setSearchRest(e.target.value)}}/>
                     <button onClick={searchRestro} className="px-4 py-1 bg-green-200 m-4 rounded-md">Search</button>
                     <button className='px-4 py-1 bg-green-200 rounded-md'>Top rated student</button>
+                    <input type="text" className='border border-solid border-black mx-10 rounded-md p-1' placeholder='  User Name'  onChange={(e) => {setuserName(e.target.value)}}></input>
             </div>
             <div className='flex flex-wrap justify-evenly border border-solid border-black pink'>
                 {filteredRest.map((restaurant) =>{

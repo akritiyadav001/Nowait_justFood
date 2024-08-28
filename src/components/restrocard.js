@@ -1,8 +1,11 @@
  import React from 'react';
+ import {useContext} from 'react';
 import "../index.css";
 import { CDN_URL } from '../utils/constant';
-const RestroCard = (props) =>{  console.log(props);
+import UserContext from '../utils/usercontext';
+const RestroCard = (props) =>{
     const {restobject} = props;
+    const {loggedInUser} = useContext(UserContext);
     const{cloudinaryImageId,name,locality,cuisines,costForTwo,avgRating,id,sla} = restobject?.info;
     return(
         <div className="">
@@ -15,6 +18,7 @@ const RestroCard = (props) =>{  console.log(props);
                  <h4>Average Rating: {avgRating}</h4>
                  <h4>{id}</h4>
                  <h4>Delivery time: {sla?.slaString}</h4>
+                 <h4>{loggedInUser}</h4>
             </div>
         </div>
     ) 

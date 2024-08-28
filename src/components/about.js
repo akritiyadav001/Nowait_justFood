@@ -1,5 +1,6 @@
 import React from 'react';
 import UserClass from "./userClass.js";
+import UserContext from '../utils/usercontext.js';
 
 
 class About extends React.Component{
@@ -18,21 +19,18 @@ class About extends React.Component{
     {
         console.log("Inside Render method");
         return(
-            <div>
-                <h1>I am about class component</h1>
-
-                <UserClass/>
+            <div className='bg-red-100 mx-auto w-[500px] my-10 p-10'>
+                <div>
+                 <h1>I am about class component</h1>
+                <div>loggedInUser</div>
+                 <UserClass/> 
+                </div>
+                <UserContext.Consumer>
+                    {({loggedInUser}) =><h1 className='text-xl font-bold'>{loggedInUser}</h1>}
+                </UserContext.Consumer>
             </div>
         )
     }
 }
 
-/*  const About = () =>{
-    return(
-        <div>
-            <h1>I am about component</h1>
-            <UserClass name={"Yadav"} location={"Kanpur"}/>
-        </div>
-    )
-}  */
 export default About;

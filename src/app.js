@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from 'react';
+import React, {lazy, Suspense,useEffect,useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/header.js';
 import Body from './components/body.js';
@@ -6,17 +6,35 @@ import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
 import About from "./components/about.js";
 import Error from "./components/error.js";
 import RestroMenu from "./components/restromenu.js"; 
-//import Grocery from './components/Grocery.js'; 
+import UserContext from './utils/usercontext.js';
+// We will provide the appStore to our application;
+
+
+
 
 const Grocery = lazy(() => import("./components/Grocery.js"))
 
 
 function App() {
+  // Authentication Code
+  const [userName, setuserName] = useState(); 
+
+  useEffect(() =>{
+     // Now I wil make an API call and send UserName and Password
+     const data = {
+      name: "Akriti Yadav",
+     }
+     setuserName(data.name);
+  },[])
+   
+// This is the root of the application  
   return (
-    <div className="App">
-      <Header/>
-      <Outlet/> 
-    </div>
+      <UserContext.Provider value={{loggedInUser : userName, setuserName}}>
+      <div className="App">
+        <Header/>
+        <Outlet/> 
+      </div>
+      </UserContext.Provider>
   );
 }
 

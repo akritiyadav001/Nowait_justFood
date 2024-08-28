@@ -1,12 +1,16 @@
 import "../index.css";
 import { LOGO_URL } from "../utils/constant";
-import {useState, useEffect} from 'react';
+import {useState, useEffect,useContext} from 'react';
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from '../utils/usercontext';
+
+
 function Header()
 {
     const [btnname1, setBtnname1] = useState("Login");
     const onlineStatus = useOnlineStatus();
+    const {loggedInUser} = useContext(UserContext);
     
 
        return(
@@ -21,8 +25,10 @@ function Header()
                         <li  className="px-4"><Link to='/contact'>Contact</Link></li>
                         <li  className="px-4"><Link to="/about">About Us</Link></li>
                         <li  className="px-4"><Link to="/grocery">Grocery</Link></li>
-                        <li  className="px-4"><Link to="/cart">Cart</Link></li>
+                        <li  className="px-4 font-bold"><Link to="/cart">Cart( items)</Link></li>
                         <li  className="px-4"><button id="login-button" onClick={() =>{btnname1 === "Login"?setBtnname1("Logout"):setBtnname1("Login")}}>{btnname1}</button></li>
+                        <li>{loggedInUser}</li>
+
                     </ul>
             </div>
         </div>
