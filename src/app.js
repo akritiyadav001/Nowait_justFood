@@ -10,6 +10,7 @@ import UserContext from './utils/usercontext.js';
 // We will provide the appStore to our application;
 import {Provider} from 'react-redux';
 import appStore from './utils/appStore.js';
+import Cart from './components/cart.js';
 
 
 
@@ -66,6 +67,11 @@ const appRoutes = createBrowserRouter([
         path:"/restaurants/:resId",
         element:<RestroMenu/>,
         errorelement:<Error/>
+      },
+      {
+        path:"/cart",
+        element: <Cart/>,
+        errorElement: <Error/>
       }
     ],
       errorElement: <Error/>

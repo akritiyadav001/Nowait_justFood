@@ -1,11 +1,11 @@
-import { addItems } from "../cartSlice";
+import { addItems } from "../utils/cartSlice";
 import { CDN_URL } from "../utils/constant";
+import {useDispatch} from 'react-redux';
 const ItemList = ({items}) =>{
- /*    const dispatch = useDispatch() */
+     const dispatch = useDispatch() 
 
-    const handleAddItem = () =>{
-      /*   dispatch(addItem("Pizza")); */
-      alert("Hi");
+    const handleAddItem = (item) =>{
+        dispatch(addItems(item)); 
     } 
     return(
         <div>
