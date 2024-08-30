@@ -8,7 +8,8 @@ import Error from "./components/error.js";
 import RestroMenu from "./components/restromenu.js"; 
 import UserContext from './utils/usercontext.js';
 // We will provide the appStore to our application;
-
+import {Provider} from 'react-redux';
+import appStore from './utils/appStore.js';
 
 
 
@@ -29,12 +30,14 @@ function App() {
    
 // This is the root of the application  
   return (
+    <Provider store={appStore}>
       <UserContext.Provider value={{loggedInUser : userName, setuserName}}>
       <div className="App">
         <Header/>
         <Outlet/> 
       </div>
       </UserContext.Provider>
+    </Provider>
   );
 }
 
