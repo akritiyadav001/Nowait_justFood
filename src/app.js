@@ -5,12 +5,14 @@ import Body from './components/body.js';
 import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
 import About from "./components/about.js";
 import Error from "./components/error.js";
+import Contact from "./components/contact.js";
 import RestroMenu from "./components/restromenu.js"; 
 import UserContext from './utils/usercontext.js';
 // We will provide the appStore to our application;
 import {Provider} from 'react-redux';
 import appStore from './utils/appStore.js';
 import Cart from './components/cart.js';
+
 
 
 
@@ -57,6 +59,11 @@ const appRoutes = createBrowserRouter([
         {
         path:"/about",
         element:<About/>,
+        errorElement:<Error/> 
+      },
+      {
+        path:"/contact",
+        element:<Contact/>,
         errorElement:<Error/> 
       },
       {
