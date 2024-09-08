@@ -1,6 +1,5 @@
  import React from 'react';
  import {useContext} from 'react';
-import "../index.css";
 import { CDN_URL } from '../utils/constant';
 import UserContext from '../utils/usercontext';
 const RestroCard = (props) =>{
@@ -8,7 +7,7 @@ const RestroCard = (props) =>{
     const {loggedInUser} = useContext(UserContext);
     const{cloudinaryImageId,name,locality,cuisines,costForTwo,avgRating,id,sla} = restobject?.info;
     return(
-        <div className="">
+        <div>
             <div className='m-5 p-4 w-[240px] bg-gray-100 rounded-md'>
                 <img id="img1" src={CDN_URL+ cloudinaryImageId} alt='card' className='rounded-md'></img>
                  <h4 className='font-medium my-2'>{name}</h4> 

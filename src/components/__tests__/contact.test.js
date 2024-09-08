@@ -2,7 +2,7 @@ import {render, screen} from '@testing-library/react';
 import Contact from '../contact';
 import "@testing-library/jest-dom";
 
-describle("Contact us pages test Cases", () =>{
+describe("Contact us pages test Cases", () =>{
 
 
     test("Should load contact us component", () =>{

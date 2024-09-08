@@ -1,6 +1,6 @@
-import "../index.css";
+
 import { LOGO_URL } from "../utils/constant";
-import {useState, useEffect,useContext} from 'react';
+import {useState,useContext} from 'react';
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from '../utils/usercontext';
